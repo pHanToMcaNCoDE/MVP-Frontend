@@ -1,0 +1,44 @@
+:root {
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  padding: 0 100px 0 100px;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 0 32px 0 32px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    padding: 0 20px 0 20px;
+  }
+}
+
+/* src/index.css or equivalent */
+.list-checkmarks {
+  padding-left: 0; /* Remove default padding for list */
+}
+
+.list-checkmarks li {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 1.5rem; /* Add padding to align with the checkmark */
+  position: relative; /* Position relative to use before pseudo-element */
+}
+
+.list-checkmarks li::before {
+  content: "";
+  background: url("src/assets/check.svg") no-repeat center;
+  background-size: 1em 1em; /* Adjust size as needed */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em; /* Space between checkmark and text */
+  position: absolute; /* Position checkmark absolutely */
+  left: 0; /* Align checkmark to the left */
+  top: 0.25em; /* Adjust vertical alignment */
+}
