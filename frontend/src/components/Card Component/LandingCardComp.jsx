@@ -26,7 +26,7 @@ const LandingCardComp = ({
         <h3 className="sm:tracking-[-0.64px] sm:text-[32px] md:text-[36px] lg:text-[44px] font-bold md:w-fit lg:w-[437px] sm:mb-[32px]">
           {use}
         </h3>
-        <p className="sm:text-[16px] md:text-[16px] lg:text-[18px] sm:mt-[16px] md:mt-[5rem]">
+        <p className="sm:text-[16px] md:text-[16px] lg:text-[18px] sm:mt-[16px] sm:mb-[40px]">
           {description}
         </p>
         <ul className="list-checkmarks">

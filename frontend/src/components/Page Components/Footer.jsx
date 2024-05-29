@@ -9,7 +9,7 @@ import TwitterXicon from "../../assets/TwitterXicon.svg";
 
 const Footer = () => {
   return (
-    <div className=" sm:px-[20px] px-[32px] lg:px-[100px]">
+    <div className=" sm:px-[20px] px-[32px] lg:px-[100px] sm:my-[40px] md:my-[24px]">
       <div className="flex sm:flex-col md:flex-row lg:flex-row items-center justify-between border border-t-[#BCBCBC] border-transparent sm:py-[40px] md:py-[24px]">
         <p>© Copyright 2024, All Rights Reserved</p>
         <div className="flex items-center sm:mt-[40px] space-x-[32px] md:mt-0">
