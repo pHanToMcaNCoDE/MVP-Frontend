@@ -18,27 +18,27 @@ body {
   }
 }
 
-/* src/index.css or equivalent */
+
 .list-checkmarks {
-  padding-left: 0; /* Remove default padding for list */
+  padding-left: 0; 
 }
 
 .list-checkmarks li {
   display: flex;
   align-items: flex-start;
-  padding-left: 1.5rem; /* Add padding to align with the checkmark */
-  position: relative; /* Position relative to use before pseudo-element */
+  padding-left: 1.5rem; 
+  position: relative; 
 }
 
 .list-checkmarks li::before {
   content: "";
   background: url("src/assets/check.svg") no-repeat center;
-  background-size: 1em 1em; /* Adjust size as needed */
+  background-size: 1em 1em;
   display: inline-block;
   width: 1em;
   height: 1em;
-  margin-right: 0.5em; /* Space between checkmark and text */
-  position: absolute; /* Position checkmark absolutely */
-  left: 0; /* Align checkmark to the left */
-  top: 0.25em; /* Adjust vertical alignment */
+  margin-right: 0.5em; 
+  position: absolute;
+  left: 0;
+  top: 0.25em;
 }
