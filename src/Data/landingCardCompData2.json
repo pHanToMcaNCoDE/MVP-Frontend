@@ -1,24 +1,24 @@
 [
   {
-    "icon": "src/assets/Frame 27.svg",
+    "icon": "../../assets/Frame 27.svg",
     "title": "Fiat Conversion",
     "content": "Easily convert crypto payments to fiat (NGN, USD, EUR, etc.) using the platform's transparent rates and low fees.",
     "width": "small"
   },
   {
-    "icon": "src/assets/Frame 27.svg",
+    "icon": "../../assets/Frame 27.svg",
     "title": "Seamless Crypto Payments",
     "content": "Manage payroll using stablecoins and cryptocurrencies for employees and freelancers with timely compensation, scheduling, and automation",
     "width": "large"
   },
   {
-    "icon": "src/assets/Frame 28.svg",
+    "icon": "../../assets/Frame 28.svg",
     "title": "User-Friendly Dashboard",
     "content": "An intuitive interface for employers and employees that allows for real-time payment and conversion tracking, as well as detailed reports and analytics.",
     "width": "large"
   },
   {
-    "icon": "src/assets/Frame 29.svg",
+    "icon": "../../assets/Frame 29.svg",
     "title": "Global reach",
     "content": "Support for various cryptocurrencies and fiat currencies. Eliminating cross-border payment complexities",
     "width": "small"
