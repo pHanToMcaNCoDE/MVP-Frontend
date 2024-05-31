@@ -7,7 +7,7 @@ export default {
       // {'max': '1535px'}
       "sm": "320px",
       "md": "768px",
-      "lg": "1360px",
+      "lg": {"min": "1360px", "max": "1990px"},
     },
     extend: {
       colors: {
