@@ -12,7 +12,7 @@ body {
   }
 }
 
-@media screen and (min-width: 380px) {
+@media screen and (min-width: 340px) {
   body {
     padding: 0 20px 0 20px;
   }
