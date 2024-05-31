@@ -20,7 +20,7 @@ const Landing = () => {
     <>
       <div>
         <section>
-          <h3 className="font-bold sm:text-[36px] md:text-[60px] lg:text-[60px] sm:w-[355px] md:w-[722px] mx-auto md:text-center">
+          <h3 className="font-bold sm:text-[36px] md:text-[60px] lg:text-[60px] sm:w-[355px] md:w-[722px] sm:mt-[99px] md:mt-[81px] lg:mt-[80px] mx-auto md:text-center">
             Simplifying Payroll for Crypto Projects
           </h3>
           <h4 className="sm:text-[16px] md:text-[18px] sm:w-[355px] md:w-[555px] text-textSecondary text-center mx-auto mt-[24px]">
