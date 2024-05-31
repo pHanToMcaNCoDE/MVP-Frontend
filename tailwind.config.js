@@ -5,7 +5,7 @@ export default {
   theme: {
     screens: {
       // {'max': '1535px'}
-      "sm": "340px",
+      "sm": "320px",
       "md": "768px",
       "lg": "1360px",
     },
