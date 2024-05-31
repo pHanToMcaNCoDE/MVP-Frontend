@@ -1,9 +1,9 @@
 
 [
   {
-    "image1": "../../assets/LandingCardImageOneS.png",
-    "image2": "../../assets/LandingCardImageOneM.png",
-    "image3": "../../assets/LandingCardImageOneL.png",
+    "image1": "public/CardComponentImages/LandingCardImageOneS.png",
+    "image2": "public/CardComponentImages/LandingCardImageOneM.png",
+    "image3": "public/CardComponentImages/LandingCardImageOneL.png",
     "title": "For founders/Hiring mangers",
     "use": "Streamline Your Payroll",
     "description": "Coinomad offers a streamlined payroll solution with global payroll management, automated payments, and reporting—all in one platform.",
@@ -18,9 +18,9 @@
     ]
   },
   {
-    "image1": "../../assets/LandingCardImageTwoS.png",
-    "image2": "../../assets/LandingCardImageTwoM.png",
-    "image3": "../../assets/LandingCardImageTwoL.png",
+    "image1": "public/CardComponentImages/LandingCardImageTwoS.png",
+    "image2": "public/CardComponentImages/LandingCardImageTwoM.png",
+    "image3": "public/CardComponentImages/LandingCardImageTwoL.png",
     "title": "For Employees/Freelancers",
     "use": "Receive Payments Seamlessly",
     "description": "Experience flexibility and convenience in receiving payments. Whether you prefer crypto or fiat",

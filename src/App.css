@@ -12,7 +12,7 @@ body {
   }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 450px) {
   body {
     padding: 0 20px 0 20px;
   }
@@ -32,7 +32,7 @@ body {
 
 .list-checkmarks li::before {
   content: "";
-  background: url("src/assets/check.svg") no-repeat center;
+  background: url("public/svg/check.svg") no-repeat center;
   background-size: 1em 1em;
   display: inline-block;
   width: 1em;

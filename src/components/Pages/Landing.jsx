@@ -10,10 +10,10 @@ import landingCardCompData from "../../Data/landingCardCompData.json";
 import landingCardCompData2 from "../../Data/landingCardCompData2.json";
 
 //Image(s)
-import LandingImageOneM from "../../assets/LandingImageOneM.png";
-import LandingImageTwoM from "../../assets/LandingImageTwoM.png";
-import LandingImageOneL from "../../assets/LandingImageOneL.png";
-import LandingImageTwoL from "../../assets/LandingImageTwoL.png";
+import LandingImageOneM from "../../../public/CardComponentImages/LandingImageOneM.png";
+import LandingImageTwoM from "../../../public/CardComponentImages/LandingImageTwoM.png";
+import LandingImageOneL from "../../../public/CardComponentImages/LandingImageOneL.png";
+import LandingImageTwoL from "../../../public/CardComponentImages/LandingImageTwoL.png";
 
 const Landing = () => {
   return (
