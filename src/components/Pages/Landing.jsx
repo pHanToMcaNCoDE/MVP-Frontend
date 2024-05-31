@@ -120,7 +120,7 @@ const Landing = () => {
             <input
               type="email"
               name="email"
-              id="email"
+              id="email1"
               placeholder="Email Address"
               className="border border-transparent text-landingInputText bg-landingInput focus:outline-none rounded-xl sm:w-[355px] md:w-[350px] h-[56px] px-[16px]"
             />
