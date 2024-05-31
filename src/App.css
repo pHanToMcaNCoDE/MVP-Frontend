@@ -2,10 +2,8 @@
   font-family: "Open Sans", sans-serif;
 }
 
-@media screen and (min-width: 1360px) {
-  body {
-    padding: 0 100px 0 100px;
-  }
+body {
+  padding: 0 100px 0 100px;
 }
 
 @media screen and (min-width: 768px) {
@@ -18,6 +16,11 @@
   body {
     padding: 0 20px 0 20px;
   }
+}
+
+.container {
+  max-width: 1360px; /* or any desired max width */
+  margin: 0 auto; /* center the container */ /* optional: add some padding for smaller screens */
 }
 
 .list-checkmarks {

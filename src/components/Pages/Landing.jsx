@@ -91,7 +91,7 @@ const Landing = () => {
             />
           ))}
         </section>
-        <section className="sm:py-[40px] md:py-[64px] lg:py-[80px]">
+        <section className="container sm:py-[40px] md:py-[64px] lg:py-[80px]">
           <h3 className="sm:text-[44px] md:text-[52px] sm:pb-[40px] md:pb-[64px] lg:pb-[80px] font-bold text-center">
             Features
           </h3>
