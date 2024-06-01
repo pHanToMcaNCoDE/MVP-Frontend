@@ -20,7 +20,8 @@ body {
 
 .container {
   max-width: 1360px; /* or any desired max width */
-  margin: 0 auto; /* center the container */ /* optional: add some padding for smaller screens */
+  margin: 0 auto; /* center the container */
+  
 }
 
 .list-checkmarks {

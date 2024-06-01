@@ -65,7 +65,7 @@ const Landing = () => {
             />
           </div>
         </section>
-        <section className="flex flex-col items-center justify-center sm:mt-[123px] md:mt-[88px]">
+        <section className="flex flex-col items-center justify-center sm:mt-[123px] md:my-[64px] lg:my-[80px]">
           <h3 className="font-bold sm:text-[36px] md:text-[52px] sm:w-[335px] md:w-[613px] text-center">
             Unlock the Future of Payroll
           </h3>
@@ -88,6 +88,7 @@ const Landing = () => {
               description={data.description}
               list={data.list}
               reverse={index % 2 !== 0}
+              index={index}
             />
           ))}
         </section>
@@ -95,7 +96,55 @@ const Landing = () => {
           <h3 className="sm:text-[44px] md:text-[52px] sm:pb-[40px] md:pb-[64px] lg:pb-[80px] font-bold text-center">
             Features
           </h3>
-          <div className="sm:flex sm:flex-col md:flex md:flex-col sm:items-center md:items-center lg:grid lg:grid-cols-2 lg:px-[100px]">
+          <div className="sm:flex sm:flex-col md:flex md:flex-col sm:items-center md:items-center">
+            <div className="sm:hidden md:hidden lg:flex flex-col">
+              <div className="flex items-center justify-center space-x-[32px] mb-[32px]">
+                <section className="border border-transparent bg-[#F7F7F7] p-[40px] w-[495px] rounded-2xl">
+                  <img src="/svg/Frame 27.svg" alt="icon" />
+                  <h2 className="lg:text-xl lg:w-fit font-bold mt-[16px] mb-[11px]">
+                    Fiat Conversion
+                  </h2>
+                  <p className="lg:text-lg lg:w-fit text-textSecondary">
+                    Easily convert crypto payments to fiat (NGN, USD, EUR, etc.)
+                    using the platform's transparent rates and low fees.
+                  </p>
+                </section>
+                <section className="border border-transparent bg-[#F7F7F7] p-[40px] w-[630px] rounded-2xl">
+                  <img src="/svg/Frame 27.svg" alt="icon" />
+                  <h2 className="lg:text-xl lg:w-fit font-bold mt-[16px] mb-[11px]">
+                    Seamless Crypto Payments
+                  </h2>
+                  <p className="lg:text-lg lg:w-fit text-textSecondary">
+                    Manage payroll using stablecoins and cryptocurrencies for
+                    employees and freelancers with timely compensation,
+                    scheduling, and automation
+                  </p>
+                </section>
+              </div>
+              <div className="flex items-center justify-center space-x-[32px]">
+                <section className="border border-transparent bg-[#F7F7F7] p-[40px] w-[630px] rounded-2xl">
+                  <img src="/svg/Frame 28.svg" alt="icon" />
+                  <h2 className="lg:text-xl lg:w-fit font-bold mt-[16px] mb-[8px]">
+                    User-Friendly Dashboard
+                  </h2>
+                  <p className="lg:text-lg lg:w-fit text-textSecondary">
+                    An intuitive interface for employers and employees that
+                    allows for real-time payment and conversion tracking, as
+                    well as detailed reports and analytics.
+                  </p>
+                </section>
+                <section className="border border-transparent bg-[#F7F7F7] p-[40px] w-[495px] rounded-2xl">
+                  <img src="/svg/Frame 29.svg" alt="icon" />
+                  <h2 className="lg:text-xl lg:w-fit font-bold mt-[16px] mb-[8px]">
+                    Global reach
+                  </h2>
+                  <p className="lg:text-lg lg:w-fit text-textSecondary">
+                    Support for various cryptocurrencies and fiat currencies.
+                    Eliminating cross-border payment complexities
+                  </p>
+                </section>
+              </div>
+            </div>
             {landingCardCompData2.map((data, index) => (
               <LandingCardComp2
                 key={index}
