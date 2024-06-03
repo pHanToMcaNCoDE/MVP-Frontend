@@ -1,5 +1,6 @@
 //App
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 //Component(s)
 import LandingCardComp from "../Card Component/LandingCardComp";
@@ -16,11 +17,39 @@ import LandingImageOneL from "../../../public/CardComponentImages/LandingImageOn
 import LandingImageTwoL from "../../../public/CardComponentImages/LandingImageTwoL.png";
 
 const Landing = () => {
+  const [email, setEmail] = useState("");
+
+  // waitlist submission code
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: email,
+    };
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://mvp-backend-bzvi.onrender.com/v1/api/waitlist",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+    };
+
+    try {
+      const response = await axios(config);
+      console.log(JSON.stringify(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div>
         <section>
-          <h3 className="font-bold sm:text-[36px] md:text-[60px] lg:text-[60px] sm:w-[355px] md:w-[722px] sm:mt-[99px] md:mt-[81px] lg:mt-[80px] mx-auto md:text-center">
+          <h3 className="font-bold sm:text-[36px] md:text-[60px] lg:text-[60px] sm:w-[355px] md:w-[722px] sm:mt-[99px] md:mt-[81px] lg:mt-[80px] mx-auto text-center">
             Simplifying Payroll for Crypto Projects
           </h3>
           <h4 className="sm:text-[16px] md:text-[18px] sm:w-[355px] md:w-[555px] text-textSecondary text-center mx-auto mt-[24px]">
@@ -32,12 +61,15 @@ const Landing = () => {
               type="email"
               name="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
               className="border border-transparent text-landingInputText bg-landingInput focus:outline-none rounded-xl sm:w-[355px] md:w-[350px] h-[56px] px-[16px]"
             />
             <button
               className="text-white bg-buttonPrimary rounded-[8px] sm:w-[355px] md:w-[148px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
               type="submit"
+              onClick={handleSubmit}
             >
               Submit
             </button>
@@ -170,12 +202,15 @@ const Landing = () => {
               type="email"
               name="email"
               id="email1"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
               className="border border-transparent text-landingInputText bg-landingInput focus:outline-none rounded-xl sm:w-[355px] md:w-[350px] h-[56px] px-[16px]"
             />
             <button
               className="text-white bg-buttonPrimary rounded-[8px] sm:w-[355px] md:w-[173px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
               type="submit"
+              onClick={handleSubmit}
             >
               Submit
             </button>
