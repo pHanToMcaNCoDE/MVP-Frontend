@@ -40,7 +40,6 @@ const Landing = () => {
     try {
       const response = await axios(config);
       console.log(JSON.stringify(response.data));
-      alert("Successfully joined the waitlist!")
     } catch (error) {
       console.log(error);
     }
