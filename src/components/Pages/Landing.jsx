@@ -5,6 +5,7 @@ import axios from "axios";
 //Component(s)
 import LandingCardComp from "../Card Component/LandingCardComp";
 import LandingCardComp2 from "../Card Component/LandingCardComp2";
+import { ScaleLoader } from "react-spinners";
 
 //Data(s)
 import landingCardCompData from "../../Data/landingCardCompData.json";
@@ -17,11 +18,17 @@ import LandingImageOneL from "../../../public/CardComponentImages/LandingImageOn
 import LandingImageTwoL from "../../../public/CardComponentImages/LandingImageTwoL.png";
 
 const Landing = () => {
+
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
   // waitlist submission code
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     const data = {
       email: email,
@@ -71,7 +78,7 @@ const Landing = () => {
               type="submit"
               onClick={handleSubmit}
             >
-              Submit
+              {isLoading ? <ScaleLoader color="#fff" height={15} className="translate-y-[3px]"/> : "Submit"}
             </button>
           </div>
           <div className="flex items-center justify-center md:space-x-6 lg:space-x-8 md:mt-[64px] lg:mt-[80px]">
