@@ -18,15 +18,26 @@ import LandingImageOneL from "../../../public/CardComponentImages/LandingImageOn
 import LandingImageTwoL from "../../../public/CardComponentImages/LandingImageTwoL.png";
 
 const Landing = () => {
-
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
+  const [popupMessage, setPopupMessage] = useState("");
+
+  // Email validation function
+  const isValidEmail = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
 
   // waitlist submission code
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isValidEmail(email)) {
+      setPopupMessage("Invalid email address");
+      setShowPopup(true);
+      return;
+    }
 
     setIsLoading(true);
 
@@ -46,9 +57,16 @@ const Landing = () => {
 
     try {
       const response = await axios(config);
-      console.log(JSON.stringify(response.data));
+      if (response.data.status === "success") {
+        setPopupMessage("Successfully joined the waitlist");
+      } else if (response.data.status === "already_joined") {
+        setPopupMessage("User already joined the waitlist");
+      }
     } catch (error) {
-      console.log(error);
+      setPopupMessage("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+      setShowPopup(true);
     }
   };
 
@@ -78,8 +96,30 @@ const Landing = () => {
               type="submit"
               onClick={handleSubmit}
             >
-              {isLoading ? <ScaleLoader color="#fff" height={15} className="translate-y-[3px]"/> : "Submit"}
+              {isLoading ? (
+                <ScaleLoader
+                  color="#fff"
+                  height={15}
+                  className="translate-y-[3px]"
+                />
+              ) : (
+                "Submit"
+              )}
             </button>
+
+            {showPopup && (
+              <div className="fixed inset-0 w-full bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="bg-white p-6 rounded-lg shadow-lg relative">
+                  <button
+                    className="absolute top-2 right-2 text-gray-600 font-semibold text-lg"
+                    onClick={() => setShowPopup(false)}
+                  >
+                    x
+                  </button>
+                  <p>{popupMessage}</p>
+                </div>
+              </div>
+            )}
           </div>
           <div className="flex items-center justify-center md:space-x-6 lg:space-x-8 md:mt-[64px] lg:mt-[80px]">
             <img
