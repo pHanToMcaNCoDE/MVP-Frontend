@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Page(s)
 import Landing from "./components/Pages/Landing";
 import Error from "./components/Pages/Error";
+import SignIn from "./components/Pages/Authentication Pages/SignIn";
+import SignUp from "./components/Pages/Authentication Pages/SignUp";
 
 //Page Component
 import Header from "./components/Page Components/Header";
@@ -22,6 +24,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="*" element={<Error />} />
           <Route path="/home" element={<Landing />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
         <Footer />
       </Router>
