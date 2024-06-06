@@ -5,7 +5,7 @@ import axios from "axios";
 //Component(s)
 import LandingCardComp from "../Card Component/LandingCardComp";
 import LandingCardComp2 from "../Card Component/LandingCardComp2";
-import { ScaleLoader } from "react-spinners";
+import { ScaleLoader } from "react-spinners"; // loading animantion component used for buttons
 
 //Data(s)
 import landingCardCompData from "../../Data/landingCardCompData.json";
@@ -16,12 +16,16 @@ import LandingImageOneM from "../../../public/CardComponentImages/LandingImageOn
 import LandingImageTwoM from "../../../public/CardComponentImages/LandingImageTwoM.png";
 import LandingImageOneL from "../../../public/CardComponentImages/LandingImageOneL.png";
 import LandingImageTwoL from "../../../public/CardComponentImages/LandingImageTwoL.png";
+import checkCircle from "../../../public/svg/checkCircle.svg";
+import exclamation from "../../../public/svg/exclamation.svg";
+import exclamationCircle from "../../../public/svg/exclamationCircle.svg";
 
 const Landing = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
+  const [popupType, setPopupType] = useState("");
 
   // Email validation function
   const isValidEmail = (email) => {
@@ -35,6 +39,7 @@ const Landing = () => {
 
     if (!isValidEmail(email)) {
       setPopupMessage("Invalid email address");
+      setPopupType("error");
       setShowPopup(true);
       return;
     }
@@ -57,16 +62,60 @@ const Landing = () => {
 
     try {
       const response = await axios(config);
-      if (response.data.status === "success") {
+      if (response.data.success) {
         setPopupMessage("Successfully joined the waitlist");
-      } else if (response.data.status === "already_joined") {
-        setPopupMessage("User already joined the waitlist");
+        setPopupType("success");
+      } else {
+        setPopupMessage(response.data.message);
+        setPopupType("error");
       }
     } catch (error) {
-      setPopupMessage("An error occurred. Please try again.");
+      if (error.response && error.response.status === 400) {
+        setPopupMessage("You have already joined the waitlist");
+        setPopupType("info");
+      } else if (error.response && error.response.status === 500) {
+        setPopupMessage(error.response.data.message);
+        setPopupType("error");
+      } else {
+        setPopupMessage("An error occurred. Please try again.");
+        setPopupType("error");
+      }
     } finally {
       setIsLoading(false);
       setShowPopup(true);
+    }
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setEmail(""); // Clear the email input
+  };
+
+  //Pop-up Icon
+  const getPopupIcon = () => {
+    switch (popupType) {
+      case "success":
+        return <img src={checkCircle} alt="Success Icon" />;
+      case "error":
+        return <img src={exclamationCircle} alt="Error Icon" />;
+      case "info":
+        return <img src={exclamation} alt="Info Icon" />;
+      default:
+        return null;
+    }
+  };
+
+  //Changing background color of pop-up message
+  const getPopupBackgroundColor = () => {
+    switch (popupType) {
+      case "success":
+        return "bg-[#23AE5E]";
+      case "error":
+        return "bg-[#ED2F2F]";
+      case "info":
+        return "bg-[#EDB82F]";
+      default:
+        return "bg-white";
     }
   };
 
@@ -81,7 +130,7 @@ const Landing = () => {
             Effortlessly manage payroll with seamless crypto payments and easy
             fiat conversions.
           </h4>
-          <div className="mt-[40px] flex sm:flex-col md:flex-row items-center justify-center sm:space-y-3 md:space-y-0 md:space-x-3">
+          <div className="mt-[40px] flex sm:flex-col md:flex-row items-center justify-center sm:space-y-3 md:space-y-0 md:space-x-3 lg:space-x-0">
             <input
               type="email"
               name="email"
@@ -108,15 +157,33 @@ const Landing = () => {
             </button>
 
             {showPopup && (
-              <div className="fixed inset-0 w-full bg-black bg-opacity-50 flex items-center justify-center">
-                <div className="bg-white p-6 rounded-lg shadow-lg relative">
-                  <button
-                    className="absolute top-2 right-2 text-gray-600 font-semibold text-lg"
-                    onClick={() => setShowPopup(false)}
-                  >
-                    x
-                  </button>
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-10 flex items-center justify-center">
+                <div
+                  className={`flex items-center justify-between lg:space-x-2 p-6 lg:py-[16px] lg:px-[20px] rounded-lg shadow-lg relative text-white ${getPopupBackgroundColor()}`}
+                >
+                  <span>{getPopupIcon()}</span>
                   <p>{popupMessage}</p>
+                  <button
+                    className="font-semibold text-lg"
+                    onClick={closePopup}
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="close-fill">
+                        <path
+                          id="Vector"
+                          d="M11.6471 10.9401L12.0007 11.2936L12.3543 10.94L16.9504 6.34383L17.6575 7.05093L13.0613 11.6471L12.7078 12.0007L13.0613 12.3543L17.6575 16.9504L16.9504 17.6575L12.3543 13.0613L12.0007 12.7078L11.6471 13.0613L7.05093 17.6575L6.34383 16.9504L10.94 12.3543L11.2936 12.0007L10.9401 11.6471L6.34383 7.05093L7.05093 6.34383L11.6471 10.9401Z"
+                          fill="#FDFDFE"
+                          stroke="#FDFDFE"
+                        />
+                      </g>
+                    </svg>
+                  </button>
                 </div>
               </div>
             )}
@@ -259,7 +326,15 @@ const Landing = () => {
               type="submit"
               onClick={handleSubmit}
             >
-              Submit
+              {isLoading ? (
+                <ScaleLoader
+                  color="#fff"
+                  height={15}
+                  className="translate-y-[3px]"
+                />
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </section>
