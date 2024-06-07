@@ -130,7 +130,7 @@ const Landing = () => {
             Effortlessly manage payroll with seamless crypto payments and easy
             fiat conversions.
           </h4>
-          <div className="mt-[40px] flex sm:flex-col md:flex-row items-center justify-center sm:space-y-3 md:space-y-0 md:space-x-3 lg:space-x-0">
+          <div className="mt-[40px] flex sm:flex-col md:flex-row items-center justify-center md:space-y-0 ">
             <input
               type="email"
               name="email"
@@ -141,7 +141,7 @@ const Landing = () => {
               className="border border-transparent text-landingInputText bg-landingInput focus:outline-none rounded-xl sm:w-[355px] md:w-[350px] h-[56px] px-[16px]"
             />
             <button
-              className="text-white bg-buttonPrimary rounded-[8px] sm:w-[355px] md:w-[148px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
+              className="text-white bg-buttonPrimary rounded-[8px] sm:mt-[12px] sm:w-[355px] md:w-[148px] md:ml-[12px] lg:ml-[12px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
               type="submit"
               onClick={handleSubmit}
             >
