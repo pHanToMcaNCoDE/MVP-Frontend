@@ -6,7 +6,7 @@ const HideHeaderFooter = ({ children, HeaderComponent, FooterComponent }) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/sign-in" || location.pathname === "/sign-up") {
+    if (location.pathname === "/signin" || location.pathname === "/signup") {
       setShowHeaderFooter(false);
     } else {
       setShowHeaderFooter(true);
