@@ -23,10 +23,9 @@ function App() {
         <HideHeaderFooter HeaderComponent={Header} FooterComponent={Footer}>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="*" element={<Error />} />
             <Route path="/home" element={<Landing />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </HideHeaderFooter>
       </Router>
