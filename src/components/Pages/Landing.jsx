@@ -63,7 +63,7 @@ const Landing = () => {
     try {
       const response = await axios(config);
       if (response.data.success) {
-        setPopupMessage("Successfully joined the waitlist");
+        setPopupMessage("Thanks for joining! You’re now on our waitlist.");
         setPopupType("success");
       } else {
         setPopupMessage(response.data.message);
@@ -71,7 +71,7 @@ const Landing = () => {
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        setPopupMessage("You have already joined the waitlist");
+        setPopupMessage("It looks like you’re already joined our waitlist.");
         setPopupType("info");
       } else if (error.response && error.response.status === 500) {
         setPopupMessage(error.response.data.message);
