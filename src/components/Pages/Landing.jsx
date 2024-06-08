@@ -152,7 +152,7 @@ const Landing = () => {
                   className="translate-y-[3px]"
                 />
               ) : (
-                "Submit"
+                "Get Early Access"
               )}
             </button>
 
@@ -333,7 +333,7 @@ const Landing = () => {
                   className="translate-y-[3px]"
                 />
               ) : (
-                "Submit"
+                "Get Early Access"
               )}
             </button>
           </div>
