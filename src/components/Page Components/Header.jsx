@@ -11,9 +11,9 @@ const Header = () => {
       <Link to="/home" className="flex items-center justify-center sm:py-[16px] py-[24px]">
         <img src={HeaderLogo} alt="logo-icon" />
       </Link>
-      <Link to="/sign-up" className="">
+      {/* <Link to="/sign-up" className="">
         <button>Sign Up</button>
-      </Link>
+      </Link> */}
     </div>
   );
 };
