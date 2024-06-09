@@ -1,9 +1,11 @@
 //App
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 //Component(s)
 import LandingCardComp from "../Card Component/LandingCardComp";
 import LandingCardComp2 from "../Card Component/LandingCardComp2";
+import { ScaleLoader } from "react-spinners"; // loading animantion component used for buttons
 
 //Data(s)
 import landingCardCompData from "../../Data/landingCardCompData.json";
@@ -14,33 +16,177 @@ import LandingImageOneM from "../../../public/CardComponentImages/LandingImageOn
 import LandingImageTwoM from "../../../public/CardComponentImages/LandingImageTwoM.png";
 import LandingImageOneL from "../../../public/CardComponentImages/LandingImageOneL.png";
 import LandingImageTwoL from "../../../public/CardComponentImages/LandingImageTwoL.png";
+import checkCircle from "../../../public/svg/checkCircle.svg";
+import exclamation from "../../../public/svg/exclamation.svg";
+import exclamationCircle from "../../../public/svg/exclamationCircle.svg";
 
 const Landing = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+  const [popupType, setPopupType] = useState("");
+
+  // Email validation function
+  const isValidEmail = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
+
+  // waitlist submission code
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!isValidEmail(email)) {
+      setPopupMessage("Invalid email address");
+      setPopupType("error");
+      setShowPopup(true);
+      return;
+    }
+
+    setIsLoading(true);
+
+    const data = {
+      email: email,
+    };
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://mvp-backend-bzvi.onrender.com/v1/api/waitlist",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+    };
+
+    try {
+      const response = await axios(config);
+      if (response.data.success) {
+        setPopupMessage("Thanks for joining! You’re now on our waitlist.");
+        setPopupType("success");
+      } else {
+        setPopupMessage(response.data.message);
+        setPopupType("error");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setPopupMessage("It looks like you’re already joined our waitlist.");
+        setPopupType("info");
+      } else if (error.response && error.response.status === 500) {
+        setPopupMessage(error.response.data.message);
+        setPopupType("error");
+      } else {
+        setPopupMessage("An error occurred. Please try again.");
+        setPopupType("error");
+      }
+    } finally {
+      setIsLoading(false);
+      setShowPopup(true);
+    }
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setEmail(""); // Clear the email input
+  };
+
+  //Pop-up Icon
+  const getPopupIcon = () => {
+    switch (popupType) {
+      case "success":
+        return <img src={checkCircle} alt="Success Icon" />;
+      case "error":
+        return <img src={exclamationCircle} alt="Error Icon" />;
+      case "info":
+        return <img src={exclamation} alt="Info Icon" />;
+      default:
+        return null;
+    }
+  };
+
+  //Changing background color of pop-up message
+  const getPopupBackgroundColor = () => {
+    switch (popupType) {
+      case "success":
+        return "bg-[#23AE5E]";
+      case "error":
+        return "bg-[#ED2F2F]";
+      case "info":
+        return "bg-[#EDB82F]";
+      default:
+        return "bg-white";
+    }
+  };
+
   return (
     <>
       <div>
         <section>
-          <h3 className="font-bold sm:text-[36px] md:text-[60px] lg:text-[60px] sm:w-[355px] md:w-[722px] sm:mt-[99px] md:mt-[81px] lg:mt-[80px] mx-auto md:text-center">
+          <h3 className="font-bold sm:text-[36px] md:text-[60px] lg:text-[60px] sm:w-[355px] md:w-[722px] sm:mt-[99px] md:mt-[81px] lg:mt-[80px] mx-auto text-center">
             Simplifying Payroll for Crypto Projects
           </h3>
           <h4 className="sm:text-[16px] md:text-[18px] sm:w-[355px] md:w-[555px] text-textSecondary text-center mx-auto mt-[24px]">
             Effortlessly manage payroll with seamless crypto payments and easy
             fiat conversions.
           </h4>
-          <div className="mt-[40px] flex sm:flex-col md:flex-row items-center justify-center sm:space-y-3 md:space-y-0 md:space-x-3">
+          <div className="mt-[40px] flex sm:flex-col md:flex-row items-center justify-center md:space-y-0 ">
             <input
               type="email"
               name="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
               className="border border-transparent text-landingInputText bg-landingInput focus:outline-none rounded-xl sm:w-[355px] md:w-[350px] h-[56px] px-[16px]"
             />
             <button
-              className="text-white bg-buttonPrimary rounded-[8px] sm:w-[355px] md:w-[148px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
+              className="text-white bg-buttonPrimary rounded-[8px] sm:mt-[12px] sm:w-[355px] md:w-[148px] md:ml-[12px] lg:ml-[12px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
               type="submit"
+              onClick={handleSubmit}
             >
-              Submit
+              {isLoading ? (
+                <ScaleLoader
+                  color="#fff"
+                  height={15}
+                  className="translate-y-[3px]"
+                />
+              ) : (
+                "Get Early Access"
+              )}
             </button>
+
+            {showPopup && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-10 flex items-center justify-center">
+                <div
+                  className={`flex items-center justify-between lg:space-x-2 p-6 lg:py-[16px] lg:px-[20px] rounded-lg shadow-lg relative text-white ${getPopupBackgroundColor()}`}
+                >
+                  <span>{getPopupIcon()}</span>
+                  <p>{popupMessage}</p>
+                  <button
+                    className="font-semibold text-lg"
+                    onClick={closePopup}
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="close-fill">
+                        <path
+                          id="Vector"
+                          d="M11.6471 10.9401L12.0007 11.2936L12.3543 10.94L16.9504 6.34383L17.6575 7.05093L13.0613 11.6471L12.7078 12.0007L13.0613 12.3543L17.6575 16.9504L16.9504 17.6575L12.3543 13.0613L12.0007 12.7078L11.6471 13.0613L7.05093 17.6575L6.34383 16.9504L10.94 12.3543L11.2936 12.0007L10.9401 11.6471L6.34383 7.05093L7.05093 6.34383L11.6471 10.9401Z"
+                          fill="#FDFDFE"
+                          stroke="#FDFDFE"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
           <div className="flex items-center justify-center md:space-x-6 lg:space-x-8 md:mt-[64px] lg:mt-[80px]">
             <img
@@ -170,14 +316,25 @@ const Landing = () => {
               type="email"
               name="email"
               id="email1"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
               className="border border-transparent text-landingInputText bg-landingInput focus:outline-none rounded-xl sm:w-[355px] md:w-[350px] h-[56px] px-[16px]"
             />
             <button
               className="text-white bg-buttonPrimary rounded-[8px] sm:w-[355px] md:w-[173px] h-[56px] shadow-customInset hover:bg-buttonPrimaryHover"
               type="submit"
+              onClick={handleSubmit}
             >
-              Submit
+              {isLoading ? (
+                <ScaleLoader
+                  color="#fff"
+                  height={15}
+                  className="translate-y-[3px]"
+                />
+              ) : (
+                "Get Early Access"
+              )}
             </button>
           </div>
         </section>
