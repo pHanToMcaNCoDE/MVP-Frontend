@@ -18,12 +18,13 @@ body {
   }
 }
 
+/* Styling used to ensure max width of desktop is constant through all desktop screen sizes */
 .container {
-  max-width: 1360px; /* or any desired max width */
-  margin: 0 auto; /* center the container */
-  
+  max-width: 1360px; 
+  margin: 0 auto; 
 }
 
+/* styling for list used in the landing page */
 .list-checkmarks {
   padding-left: 0;
 }
