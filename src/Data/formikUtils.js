@@ -13,5 +13,5 @@ export const signIn = Yup.object({
 export const signUp = Yup.object({
     email: Yup.string().email('Enter Your E-mail Address').matches(emailRegExp, 'Invalid E-mail Address').required('required'),
     fullName: Yup.string().required('required'),
-    password: Yup.string().min(6, 'Password must contain at least 6 characters!').matches(passwordRegExp, 'characters with at least one of each: uppercase, lowercase, number and special').required('required')
+    password: Yup.string().max(8, 'Password must not exceed 8 characters!').matches(passwordRegExp, 'Invalid Password Input').required('required')
 });
