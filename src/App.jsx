@@ -15,6 +15,7 @@ import HideHeaderFooter from "./components/Page Components/HideHeaderFooter";
 
 //Stytle
 import "./App.css";
+import VerifyEmail from "./components/Pages/Authentication Pages/VerifyEmail";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/home" element={<Landing />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/verify-email" element={<VerifyEmail/>} />
           </Routes>
         </HideHeaderFooter>
       </Router>
