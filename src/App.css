@@ -1,9 +1,13 @@
-:root {
+body{
   font-family: "Open Sans", sans-serif;
 }
 
 body {
   padding: 0 100px 0 100px;
+}
+
+.custom-radio {
+  @apply appearance-none bg-transparent border border-gray-400 rounded-full h-5 w-5 checked:bg-blue-500 checked:border-transparent focus:outline-none;
 }
 
 @media screen and (min-width: 768px) {

@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./components/Pages/Landing";
 import Error from "./components/Pages/Error";
 import SignIn from "./components/Pages/Authentication Pages/SignIn";
-import SignUp from "./components/Pages/Authentication Pages/SignUp";
 
 //Page Component
 import Header from "./components/Page Components/Header";
@@ -15,6 +14,8 @@ import HideHeaderFooter from "./components/Page Components/HideHeaderFooter";
 
 //Stytle
 import "./App.css";
+import VerifyEmail from "./components/Pages/Authentication Pages/VerifyEmail";
+import StepOne from "./components/Pages/Authentication Pages/SignUp/StepOne";
 
 function App() {
   return (
@@ -25,7 +26,10 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/home" element={<Landing />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-up">
+              <Route path="step-1" element={<StepOne/>}></Route>
+              <Route path="verify-email" element={<VerifyEmail />} />
+            </Route>
           </Routes>
         </HideHeaderFooter>
       </Router>

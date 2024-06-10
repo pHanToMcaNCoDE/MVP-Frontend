@@ -6,13 +6,13 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 //Component(s)
 import { ScaleLoader } from "react-spinners"; // loading animantion component used for buttons
-import { signUp } from '../../../Data/formikUtils';
-import InputField from '../../formFields/InputField';
-import PasswordField from '../../formFields/PasswordField';
+import { signUp } from '../../../../Data/formikUtils';
+import InputField from '../../../formFields/InputField';
+import PasswordField from '../../../formFields/PasswordField';
 import { IoIosCheckmark } from 'react-icons/io';
 import axios from 'axios';
 import { PiArrowsDownUp } from 'react-icons/pi';
-import ConfirmPasswordField from '../../formFields/ConfirmPasswordField';
+import ConfirmPasswordField from '../../../formFields/ConfirmPasswordField';
 
 const SignUp = () => {
 
