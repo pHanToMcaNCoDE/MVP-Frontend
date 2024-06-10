@@ -1,25 +1,24 @@
-import { useFormik } from 'formik';
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useFormik } from "formik";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Component(s)
 import { ScaleLoader } from "react-spinners"; // loading animantion component used for buttons
-import InputField from '../../formFields/InputField';
-import { HiOutlinePencil } from 'react-icons/hi2';
-import { verifyEmail } from '../../../Data/formikUtils';
+import InputField from "../../../formFields/InputField";
+import { HiOutlinePencil } from "react-icons/hi2";
+import { verifyEmail } from "../../../../Data/formikUtils";
 
 const VerifyEmail = () => {
-
-    const [loading, setLoading] = useState(false)
-    useEffect(() => {
-        axios.get()
-    })
-    const formik = useFormik({
-        initialValues: {
-            code
-        },
-        validationSchema: verifyEmail
-    })
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    axios.get();
+  });
+  const formik = useFormik({
+    initialValues: {
+      code,
+    },
+    validationSchema: verifyEmail,
+  });
   return (
     <section className="flex flex-col justify-center items-center w-full h-screen gap-[96px]">
       <form
@@ -71,6 +70,6 @@ const VerifyEmail = () => {
       </form>
     </section>
   );
-}
+};
 
-export default VerifyEmail
+export default VerifyEmail;
