@@ -10,18 +10,17 @@ import PasswordField from "../../formFields/PasswordField";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-
   const [isClicked, setIsClicked] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: ''
+      email: "",
+      password: "",
     },
     validationSchema: signIn,
     onSubmit: (values) => {
-        // api and co
-    }
+      // api and co
+    },
   });
   return (
     <section className="w-full h-screen flex justify-center items-center">
@@ -57,7 +56,15 @@ const SignIn = () => {
           Forgot Password?
         </Link>
         <button className="bg-[#2F4EED] px-2 py-2 rounded-lg w-full text-white h-[3.5em]">
-          Submit
+          {isLoading ? (
+            <ScaleLoader
+              color="#fff"
+              height={15}
+              className="translate-y-[3px]"
+            />
+          ) : (
+            "Submit"
+          )}
         </button>
         <div className="w-full text-center text-[1rem] leading-6 font-normal flex flex-col sm:flex-row gap-x-3 justify-center items-center">
           <p className="text-[#101010]">Don’t have an account?</p>
@@ -68,6 +75,6 @@ const SignIn = () => {
       </form>
     </section>
   );
-}
+};
 
-export default SignIn
+export default SignIn;
