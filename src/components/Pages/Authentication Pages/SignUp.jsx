@@ -1,25 +1,23 @@
-import { useFormik } from 'formik';
-import { Input } from 'postcss'
+import { useFormik } from "formik";
+import { Input } from "postcss";
 //App
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 //Component(s)
 import { ScaleLoader } from "react-spinners"; // loading animantion component used for buttons
-import { signUp } from '../../../Data/formikUtils';
-import InputField from '../../formFields/InputField';
-import PasswordField from '../../formFields/PasswordField';
-import { IoIosCheckmark } from 'react-icons/io';
+import { signUp } from "../../../Data/formikUtils";
+import InputField from "../../formFields/InputField";
+import PasswordField from "../../formFields/PasswordField";
+import { IoIosCheckmark } from "react-icons/io";
 
 const SignUp = () => {
-
-
   const [isClicked, setIsClicked] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       email: "",
-      fullName: '',
+      fullName: "",
       password: "",
     },
     validationSchema: signUp,
@@ -117,10 +115,19 @@ const SignUp = () => {
           </div>
         </div>
         <button className="bg-[#2F4EED] px-2 py-2 rounded-lg w-full text-white h-[3.5em]">
-          Submit
+          {isLoading ? (
+            <ScaleLoader
+              color="#fff"
+              height={15}
+              className="translate-y-[3px]"
+            />
+          ) : (
+            "Submit"
+          )}
         </button>
         <div className="w-full text-center text-[1rem] leading-6 font-normal flex flex-col sm:flex-row gap-x-3 justify-center items-center">
           <p className="text-[#101010]">Already have an account?</p>
+
           <Link className="text-[#2F4EED]" to="/sign-in">
             Sign In
           </Link>
@@ -128,6 +135,6 @@ const SignUp = () => {
       </form>
     </section>
   );
-}
+};
 
-export default SignUp
+export default SignUp;
