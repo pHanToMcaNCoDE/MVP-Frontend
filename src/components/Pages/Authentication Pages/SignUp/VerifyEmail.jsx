@@ -8,6 +8,7 @@ import InputField from "../../../formFields/InputField";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { verifyEmail } from "../../../../Data/formikUtils";
 import axios from "axios";
+import FormButton from "../../../Buttons/FormButton";
 
 const VerifyEmail = () => {
   const [loading, setLoading] = useState(false);
@@ -53,15 +54,7 @@ const VerifyEmail = () => {
           error={formik.touched.code && formik.errors.code}
           errorText={formik.errors.code}
         />
-        <button
-          type="submit"
-          className={`${
-            loading || !formik.values.code ? "bg-[#2F4EED]/30" : "bg-[#2F4EED]"
-          } px-2 py-2 rounded-lg w-full text-white h-[3.5em] flex justify-center items-center gap-[40px]`}
-          disabled={loading || !formik.values.code}
-        >
-          {loading ? <ScaleLoader /> : "Verify Email"}
-        </button>
+        <FormButton loading={loading} btnName={"Verify Email"} value={formik.values.code} />
         {/* <button
           type="submit"
           className={`${

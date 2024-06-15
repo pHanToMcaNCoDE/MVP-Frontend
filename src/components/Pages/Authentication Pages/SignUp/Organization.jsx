@@ -7,6 +7,7 @@ import { ScaleLoader } from "react-spinners"; // loading animantion component us
 import InputField from "../../../formFields/InputField";
 import ProgressBar from "../../../Page Components/ProgressBar";
 import axios from "axios";
+import FormButton from "../../../Buttons/FormButton";
 
 const Organization = () => {
   const [loading, setLoading] = useState(false);
@@ -51,19 +52,7 @@ const Organization = () => {
           //   error={formik.touched.firstName && formik.errors.firstName}
           //   errorText={formik.errors.firstName}
         />
-        <button
-          type="submit"
-          className={`${
-            loading || !formik.values.firstName || !formik.values.lastName
-              ? "bg-[#2F4EED]/30"
-              : "bg-[#2F4EED]"
-          } px-2 py-3 rounded-lg w-[350px]  text-white flex justify-center items-center gap-[40px]`}
-          disabled={
-            loading || !formik.values.firstName || !formik.values.lastName
-          }
-        >
-          {loading ? <ScaleLoader /> : "Complete"}
-        </button>
+        <FormButton btnName={"Complete"} value={formik.values.organization} loading={loading} />
       </form>
     </section>
   );

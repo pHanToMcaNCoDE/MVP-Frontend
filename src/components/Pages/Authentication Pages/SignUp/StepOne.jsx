@@ -3,6 +3,7 @@ import { ScaleLoader } from "react-spinners";
 import InputField from "../../../formFields/InputField";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
+import FormButton from "../../../Buttons/FormButton";
 
 const StepOne = () => {
   const [loading, setLoading] = useState(false);
@@ -29,17 +30,8 @@ const StepOne = () => {
             // error={formik.touched.email && formik.errors.email} (if using form validation)
             // errorText={formik.errors.email} (if using form validation)
           />
-          <button
-            type="submit"
-            className={`${
-              loading || !formik.values.email
-                ? "bg-[#2F4EED]/30"
-                : "bg-[#2F4EED]"
-            } px-2 py-2 rounded-lg w-full text-white h-[3.5em] flex justify-center items-center gap-[40px]`}
-            disabled={loading || !formik.values.email}
-          >
-            {loading ? <ScaleLoader /> : "Sign Up with email"}
-          </button>
+          
+        <FormButton btnName={"Sign Up with email"} loading={loading} value={formik.values.email} />
         </form>
         <div className="w-full text-center text-[1rem] leading-6 font-normal flex flex-col sm:flex-row gap-x-3 justify-center items-center">
           <p className="text-[#101010]">Already have an account?</p>

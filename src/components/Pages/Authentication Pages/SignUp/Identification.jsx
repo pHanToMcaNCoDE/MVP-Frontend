@@ -8,6 +8,7 @@ import InputField from "../../../formFields/InputField";
 import { validateName } from "../../../../Data/formikUtils";
 import ProgressBar from "../../../Page Components/ProgressBar";
 import axios from "axios";
+import FormButton from "../../../Buttons/FormButton";
 
 const Identification = () => {
   const [loading, setLoading] = useState(false);
@@ -61,19 +62,7 @@ const Identification = () => {
             errorText={formik.errors.lastName}
           />
         </div>
-        <button
-          type="submit"
-          className={`${
-            loading || !formik.values.firstName || !formik.values.lastName
-              ? "bg-[#2F4EED]/30"
-              : "bg-[#2F4EED]"
-          } px-2 py-3 rounded-lg w-[350px]  text-white flex justify-center items-center mt-[40px]`}
-          disabled={
-            loading || !formik.values.firstName || !formik.values.lastName
-          }
-        >
-          {loading ? <ScaleLoader /> : "Next"}
-        </button>
+        <FormButton btnName={"Next"} value={formik.values.firstName} loading={loading} />
       </form>
     </section>
   );

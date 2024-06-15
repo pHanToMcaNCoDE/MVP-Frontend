@@ -8,6 +8,7 @@ import PasswordField from "../../../formFields/PasswordField";
 import { createPassword } from "../../../../Data/formikUtils";
 import ProgressBar from "../../../Page Components/ProgressBar";
 import axios from "axios";
+import FormButton from "../../../Buttons/FormButton";
 
 const CreatePassword = () => {
   const [loading, setLoading] = useState(false);
@@ -62,17 +63,7 @@ const CreatePassword = () => {
             }
             errorText={formik.errors.confirmPassword}
           />
-          <button
-            type="submit"
-            className={`${
-              loading || !formik.values.code
-                ? "bg-[#2F4EED]/30"
-                : "bg-[#2F4EED]"
-            } px-2 py-2 rounded-lg w-full text-white h-[3.5em] flex justify-center items-center mt-[40px]`}
-            disabled={loading || !formik.values.code}
-          >
-            {loading ? <ScaleLoader /> : "Next"}
-          </button>
+          <FormButton btnName={"Next"} value={formik.values.password} loading={loading} />
         </div>
       </form>
     </section>
