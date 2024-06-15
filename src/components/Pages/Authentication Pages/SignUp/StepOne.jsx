@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
-import { ScaleLoader } from 'react-spinners';
-import InputField from '../../../formFields/InputField';
-import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { ScaleLoader } from "react-spinners";
+import InputField from "../../../formFields/InputField";
+import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 
-const StepTwo = () => {
-    const [loading, setLoading] = useState(false)
-    const formik = ''
+const StepOne = () => {
+  const [loading, setLoading] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+  });
   return (
     <section className="flex justify-center items-center gap-[96px] w-full h-[90vh]">
       <div className="flex flex-col justify-start items-start w-[21.875em] h-[19.75em] gap-[40px]">
@@ -20,16 +24,19 @@ const StepTwo = () => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             name={`email`}
-            // value={formik.values.email}
-            // type={`text`}
-            // error={formik.touched.email && formik.errors.email}
-            // errorText={formik.errors.email}
+            value={formik.values.email} // Use formik's email value
+            type={`text`}
+            // error={formik.touched.email && formik.errors.email} (if using form validation)
+            // errorText={formik.errors.email} (if using form validation)
           />
           <button
             type="submit"
             className={`${
-              loading ? "bg-[#2F4EED]/30" : "bg-[#2F4EED]"
+              loading || !formik.values.email
+                ? "bg-[#2F4EED]/30"
+                : "bg-[#2F4EED]"
             } px-2 py-2 rounded-lg w-full text-white h-[3.5em] flex justify-center items-center gap-[40px]`}
+            disabled={loading || !formik.values.email}
           >
             {loading ? <ScaleLoader /> : "Sign Up with email"}
           </button>
@@ -43,6 +50,6 @@ const StepTwo = () => {
       </div>
     </section>
   );
-}
+};
 
-export default StepTwo
+export default StepOne;

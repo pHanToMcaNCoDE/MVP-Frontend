@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2";
 
 const PasswordField = ({
@@ -13,9 +14,9 @@ const PasswordField = ({
   min,
   max,
   onBlur,
-  isClicked,
-    setIsClicked
 }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
     <div className="flex flex-col justify-start items-start w-full">
       <div className="text-[#101010] text-[.88rem] leading-4 font-semibold mb-2 flex items-center gap-x-2">
@@ -32,7 +33,7 @@ const PasswordField = ({
         } rounded-lg w-full bg-[#F7F7F7]   text-[#000000] relative flex justify-between items-center pr-4`}
       >
         <input
-          type={type}
+          type={isClicked ? "text" : "password"}
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}

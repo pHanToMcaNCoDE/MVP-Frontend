@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import CustomRadioField from '../../../formFields/CustomRadioField';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import CustomRadioField from "../../../formFields/CustomRadioField";
 
 const StepOne = () => {
-    const [optionClicked, setOptionClicked] = useState("");
+  const [optionClicked, setOptionClicked] = useState("");
 
-    const handleChange = () => {
-      setOptionClicked(option);
-    };
+  const handleChange = () => {
+    setOptionClicked(option);
+  };
   return (
     <section className="flex justify-center items-center gap-[90px] w-full h-screen">
       <div className="gap-[40px] h-[26.25em] w-[30.5em] flex flex-col items-center">
@@ -78,7 +78,8 @@ const StepOne = () => {
               </div>
             </div>
           </div>
-          <Link to={`/sign-up/step-2`}
+          <Link
+            to={`/sign-up/step-1`} d
             className="py-0 px-2 text-center flex justify-center items-center rounded-[8px] bg-[#2F4EED] h-14 w-full text-white"
             type="submit"
           >
@@ -94,6 +95,6 @@ const StepOne = () => {
       </div>
     </section>
   );
-}
+};
 
-export default StepOne
+export default StepOne;
