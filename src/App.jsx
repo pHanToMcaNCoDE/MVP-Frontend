@@ -22,6 +22,9 @@ import HideHeaderFooter from "./components/Page Components/HideHeaderFooter";
 
 //Stytle
 import "./App.css";
+import Dashboard from "./components/Pages/AdminDashboard/Dashboard/Dashboard";
+import Employees from "./components/Pages/AdminDashboard/Employees/Employees";
+import Layout from "./components/Pages/AdminDashboard/Layout";
 
 function App() {
   return (
@@ -48,6 +51,12 @@ function App() {
               <Route path="create-password" element={<CreatePassword />} />
               <Route path="identification" element={<Identification />} />
               <Route path="organization" element={<Organization />} />
+            </Route>
+
+            {/* Dashboard */}
+            <Route path="/" element={<Layout/>}>
+              <Route path="dashboard" element={<Dashboard />}></Route>
+              <Route path="employees" element={<Employees/>}></Route>
             </Route>
           </Routes>
         </HideHeaderFooter>
