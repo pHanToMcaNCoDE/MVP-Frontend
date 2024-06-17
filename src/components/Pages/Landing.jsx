@@ -11,6 +11,9 @@ import { ScaleLoader } from "react-spinners"; // loading animantion component us
 import landingCardCompData from "../../Data/landingCardCompData.json";
 import landingCardCompData2 from "../../Data/landingCardCompData2.json";
 
+// Footer
+import Footer from '../Page Components/Footer'
+
 //Image(s)
 import LandingImageOneM from "../../../public/CardComponentImages/LandingImageOneM.png";
 import LandingImageTwoM from "../../../public/CardComponentImages/LandingImageTwoM.png";
@@ -339,6 +342,8 @@ const Landing = () => {
           </div>
         </section>
       </div>
+
+      <Footer/>
     </>
   );
 };

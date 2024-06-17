@@ -7,8 +7,9 @@ body {
 }
 
 .custom-radio {
-  @apply appearance-none bg-transparent border border-gray-400 rounded-full h-5 w-5 checked:bg-blue-500 checked:border-transparent focus:outline-none;
+  @apply h-5 w-5 focus:outline-none checked:border-transparent checked:bg-[#2F4EED] bg-transparent appearance-none border border-[#E7E7E7] rounded-full;
 }
+
 
 @media screen and (min-width: 768px) {
   body {
@@ -51,4 +52,21 @@ body {
   position: absolute;
   left: 0;
   top: 0.25em;
+}
+
+
+/* Dashboard */
+
+.content{
+  position: relative;
+  left: 240px;
+  width: calc(100% - 240px);
+}
+
+#sidebar {
+  transition: width 0.3s ease;
+}
+
+#sidebar ul a {
+  transition: width 0.3s ease;
 }

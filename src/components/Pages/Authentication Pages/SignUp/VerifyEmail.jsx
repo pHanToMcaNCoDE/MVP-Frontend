@@ -1,25 +1,27 @@
-import { useFormik } from 'formik';
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useFormik } from "formik";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Component(s)
 import { ScaleLoader } from "react-spinners"; // loading animantion component used for buttons
-import InputField from '../../formFields/InputField';
-import { HiOutlinePencil } from 'react-icons/hi2';
-import { verifyEmail } from '../../../Data/formikUtils';
+import InputField from "../../../formFields/InputField";
+import { HiOutlinePencil } from "react-icons/hi2";
+import { verifyEmail } from "../../../../Data/formikUtils";
+import axios from "axios";
+import FormButton from "../../../Buttons/FormButton";
 
 const VerifyEmail = () => {
-
-    const [loading, setLoading] = useState(false)
-    useEffect(() => {
-        axios.get()
-    })
-    const formik = useFormik({
-        initialValues: {
-            code
-        },
-        validationSchema: verifyEmail
-    })
+  const [loading, setLoading] = useState(false);
+  const [code, setCode] = useState("");
+  useEffect(() => {
+    axios.get();
+  });
+  const formik = useFormik({
+    initialValues: {
+      code: code,
+    },
+    validationSchema: verifyEmail,
+  });
   return (
     <section className="flex flex-col justify-center items-center w-full h-screen gap-[96px]">
       <form
@@ -52,16 +54,16 @@ const VerifyEmail = () => {
           error={formik.touched.code && formik.errors.code}
           errorText={formik.errors.code}
         />
-
-        <button
+        <FormButton loading={loading} btnName={"Verify Email"} value={formik.values.code} />
+        {/* <button
           type="submit"
           className={`${
             loading ? "bg-[#2F4EED]/30" : "bg-[#2F4EED]"
           } px-2 py-2 rounded-lg w-full text-white h-[3.5em] gap-[40px]`}
         >
-          {/* {loading ? <ScaleLoader /> : "Next"} */}
+          {loading ? <ScaleLoader /> : "Next"}
           Verify Email
-        </button>
+        </button> */}
         <div className="w-full text-center text-[1rem] leading-6 font-normal flex flex-col sm:flex-row gap-x-3 justify-center items-center">
           <p className="text-[#101010]">Didn’t get your code?</p>
           <Link className="text-[#2F4EED]" to="/sign-in">
@@ -71,6 +73,6 @@ const VerifyEmail = () => {
       </form>
     </section>
   );
-}
+};
 
-export default VerifyEmail
+export default VerifyEmail;
