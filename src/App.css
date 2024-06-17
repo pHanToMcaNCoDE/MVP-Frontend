@@ -57,11 +57,12 @@ body {
 
 /* Dashboard */
 
-.content{
+/* .content{
   position: relative;
   left: 240px;
+  right: 0;
   width: calc(100% - 240px);
-}
+} */
 
 #sidebar {
   transition: width 0.3s ease;
