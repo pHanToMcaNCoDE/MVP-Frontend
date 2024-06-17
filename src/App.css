@@ -53,3 +53,20 @@ body {
   left: 0;
   top: 0.25em;
 }
+
+
+/* Dashboard */
+
+.content{
+  position: relative;
+  left: 240px;
+  width: calc(100% - 240px);
+}
+
+#sidebar {
+  transition: width 0.3s ease;
+}
+
+#sidebar ul a {
+  transition: width 0.3s ease;
+}

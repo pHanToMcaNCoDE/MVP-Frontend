@@ -1,13 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Asidebar from '../../Page Components/Asidebar'
+import Header from '../Page Components/Header'
 
 const Layout = () => {
   return (
-    <main>
-        <Asidebar/>
-        <Outlet></Outlet>
-    </main>
+    <div>
+        <Header/>
+            <Outlet/>
+    </div>
   )
 }
 
