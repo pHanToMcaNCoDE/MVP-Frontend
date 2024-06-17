@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2";
 
-const PasswordField = ({
+const ConfirmPasswordField = ({
   label,
   placeholder,
   name,
@@ -14,9 +13,9 @@ const PasswordField = ({
   min,
   max,
   onBlur,
+  isClicked2,
+  setIsClicked2,
 }) => {
-  const [isClicked, setIsClicked] = useState(false);
-
   return (
     <div className="flex flex-col justify-start items-start w-full">
       <div className="text-[#101010] text-[.88rem] leading-4 font-semibold mb-2 flex items-center gap-x-2">
@@ -33,7 +32,7 @@ const PasswordField = ({
         } rounded-lg w-full bg-[#F7F7F7]   text-[#000000] relative flex justify-between items-center pr-4`}
       >
         <input
-          type={isClicked ? "text" : "password"}
+          type={type}
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}
@@ -44,14 +43,14 @@ const PasswordField = ({
           value={value}
         ></input>
         <div>
-          {isClicked ? (
+          {isClicked2 ? (
             <HiOutlineEye
-              onClick={() => setIsClicked((prev) => !prev)}
+              onClick={() => setIsClicked2((prev) => !prev)}
               className=" text-[1rem] cursor-pointer duration-200"
             />
           ) : (
             <HiOutlineEyeSlash
-              onClick={() => setIsClicked((prev) => !prev)}
+              onClick={() => setIsClicked2((prev) => !prev)}
               className=" text-[1rem] cursor-pointer duration-200"
             />
           )}
@@ -66,4 +65,4 @@ const PasswordField = ({
   );
 };
 
-export default PasswordField;
+export default ConfirmPasswordField;

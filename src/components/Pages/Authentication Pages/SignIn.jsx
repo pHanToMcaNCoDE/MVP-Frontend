@@ -8,9 +8,11 @@ import { signIn } from "../../../Data/formikUtils";
 import InputField from "../../formFields/InputField";
 import PasswordField from "../../formFields/PasswordField";
 import { Link } from "react-router-dom";
+import FormButton from "../../Buttons/FormButton";
 
 const SignIn = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -28,6 +30,9 @@ const SignIn = () => {
         className="flex flex-col justify-start items-start w-[21.875em] h-[27.75em] gap-[40px]"
         onSubmit={formik.handleSubmit}
       >
+        <h1 className="text-[#101010] text-[2rem] leading-10 font-bold">
+          Sign in
+        </h1>
         <InputField
           label={`Email`}
           placeholder={`Email Address`}
@@ -52,23 +57,17 @@ const SignIn = () => {
           isClicked={isClicked}
           setIsClicked={setIsClicked}
         />
-        <Link className="text-[1rem] leading-6 font-medium text-[#2F4EED]">
+        <Link
+          to="/forgot-password"
+          className="text-[1rem] leading-6 font-medium text-[#2F4EED]"
+        >
           Forgot Password?
         </Link>
-        <button className="bg-[#2F4EED] px-2 py-2 rounded-lg w-full text-white h-[3.5em]">
-          {isLoading ? (
-            <ScaleLoader
-              color="#fff"
-              height={15}
-              className="translate-y-[3px]"
-            />
-          ) : (
-            "Submit"
-          )}
-        </button>
+        <FormButton loading={loading} btnName={'Submit'} value={formik.values.email}/>
+        
         <div className="w-full text-center text-[1rem] leading-6 font-normal flex flex-col sm:flex-row gap-x-3 justify-center items-center">
           <p className="text-[#101010]">Don’t have an account?</p>
-          <Link className="text-[#2F4EED]" to={`/sign-up`}>
+          <Link className="text-[#2F4EED]" to={`/sign-up/step-1`}>
             Sign Up
           </Link>
         </div>
