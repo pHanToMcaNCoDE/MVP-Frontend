@@ -6,7 +6,7 @@ const AdminLayout = () => {
 
   const [clicked, setClicked] = useState(false);
   return (
-    <main className={`${clicked ? `left-[65px]` : `left-[240px]`} duration-300 content`}>
+    <main className={`${clicked ? `w-[97%] left-[50px]` : `w-[83%] left-[240px]`} duration-300 relative`}>
         <Asidebar clicked={clicked} setClicked={setClicked}/>
         <Outlet/>
     </main>

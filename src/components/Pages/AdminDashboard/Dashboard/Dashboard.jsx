@@ -6,7 +6,7 @@ import AssetsTable from '../../../Page Components/AssetsTable'
 
 const Dashboard = () => {
   return (
-    <section>
+    <section className=''>
       <DashboardHeader></DashboardHeader>
 
       <div className='gap-[24px] py-[16px] px-[32px] flex flex-col justify-center items-start self-stretch'>
